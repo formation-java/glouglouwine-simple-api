@@ -19,10 +19,12 @@ public class GlouGlouServer {
 	}
 
 	public static void main(String[] args) throws Exception {
-		new GlouGlouServer(8080).start();
+		GlouGlouServer glouGlouServer = new GlouGlouServer(8080);
+		glouGlouServer.start();
+		glouGlouServer.join();
 	}
 
-	private void start() throws Exception {
+	public void start() throws Exception {
 		server = new Server(serverPort);
 
 		ResourceConfig config = initializeResources();
@@ -34,8 +36,15 @@ public class GlouGlouServer {
 		initializeCustomJmxOperations();
 
 		server.start();
+	}
+
+	public void join() throws InterruptedException {
 		// makes the main thread wait for server thread terminiation
 		server.join();
+	}
+	
+	public void stop () throws Exception{
+		server.stop();
 	}
 
 	private void initializeCustomJmxOperations() {

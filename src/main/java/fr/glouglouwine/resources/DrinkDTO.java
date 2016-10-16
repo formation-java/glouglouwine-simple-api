@@ -2,8 +2,8 @@ package fr.glouglouwine.resources;
 
 import java.time.LocalDateTime;
 
-public class DrinkData {
-	public DrinkData() {
+public class DrinkDTO {
+	public DrinkDTO() {
 	}
 
 	public int quantity;

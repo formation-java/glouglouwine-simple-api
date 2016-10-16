@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response.Status.Family;
 
 import fr.glouglouwine.domain.Bottle;
 import fr.glouglouwine.domain.GrapeTypes;
-import fr.glouglouwine.resources.DrinkData;
+import fr.glouglouwine.resources.DrinkDTO;
 
 public class CommandHandler {
 	private Client client = ClientBuilder.newClient();
@@ -75,7 +75,7 @@ public class CommandHandler {
 	// {"quantity" : "20", "dateTime": "2016-10-14T13:16:53.735"}
 	public void drink(String bottleId, String quantity) {
 		WebTarget resource = client.target("http://localhost:8080/api/glouglou/bottles/" + bottleId + "/drink");
-		DrinkData drinkData = new DrinkData();
+		DrinkDTO drinkData = new DrinkDTO();
 		drinkData.quantity = Integer.valueOf(quantity);
 		drinkData.dateTime = LocalDateTime.now();
 		Builder request = resource.request();

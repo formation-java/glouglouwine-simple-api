@@ -57,7 +57,7 @@ public class GlouGlouResource {
 	@POST
 	@Path("bottles")
 	@Consumes("application/json")
-	public Response addBottles(Bottle bottle) {
+	public Response addBottle(Bottle bottle) {
 		MetricsHolder.INSTANCE.metrics.meter("addBottle").mark();
 		if (ManagedGlouGlouResource.INSTANCE.isAddBottleEnabled()) {
 			logger.debug("Adding bottle #" + bottle.getBottleId());
@@ -74,7 +74,7 @@ public class GlouGlouResource {
 	@POST
 	@Path("bottles/{id}/drink")
 	@Consumes("application/json")
-	public Response drink(@PathParam("id") Long id, DrinkData drinkData) {
+	public Response drink(@PathParam("id") Long id, DrinkDTO drinkData) {
 		MetricsHolder.INSTANCE.metrics.meter("drinkBottle").mark();
 		logger.debug("Drinking in bottle #" + id);
 		try {
