@@ -3,11 +3,15 @@ package fr.glouglouwine.client;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GlouGlouClient {
 
+	private static Logger logger = Logger.getLogger("GlouGlouClient"); 
+	
 	private CommandHandler commandHandler = new CommandHandler();
 
 	public static void main(String[] args) {
@@ -43,7 +47,7 @@ public class GlouGlouClient {
 						System.out.println("[" + m.getName() + "] requires [" + m.getParameterCount() + "] parameters");
 					}
 				} catch (Exception e) {
-					e.printStackTrace();
+					logger.log(Level.SEVERE, e.getMessage(), e);
 				}
 			}
 		}

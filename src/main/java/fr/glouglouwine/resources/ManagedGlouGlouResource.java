@@ -2,7 +2,7 @@ package fr.glouglouwine.resources;
 
 public class ManagedGlouGlouResource implements ManagedGlouGlouResourceMBean {
 
-	public static ManagedGlouGlouResource INSTANCE = new ManagedGlouGlouResource();
+	public final static ManagedGlouGlouResource INSTANCE = new ManagedGlouGlouResource();
 
 	private boolean addBottleEnabled = true;
 

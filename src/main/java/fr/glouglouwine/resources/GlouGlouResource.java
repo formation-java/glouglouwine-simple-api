@@ -48,7 +48,8 @@ public class GlouGlouResource {
 			try {
 				Thread.sleep(1500);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				logger.error("Un erreur est survenue lors de la simulation de délais");
+				Thread.currentThread().interrupt();
 			}
 		}
 		return bottleRepository.findAll();
@@ -85,6 +86,7 @@ public class GlouGlouResource {
 			bottle.drink(drinkData.quantity, drinkData.dateTime);
 			return Response.status(204).build();
 		} catch (IllegalArgumentException e) {
+			logger.debug("Bottle to drink not founded");
 			return Response.status(404).entity(e.getMessage()).build();
 		}
 	}
